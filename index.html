@@ -1,27 +1,251 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
-<title>AI Prompt Library | 500 Copyable Prompts</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="shell" id="shell">
- <aside aria-label="Chapter navigation" id="sidebar"><div class="logo"><div class="emblem" aria-hidden="true">AI</div><div><strong id="logoTitle">Prompt Library</strong><small id="logoSmall">500 PROMPTS · 5 CHAPTERS</small></div></div><div class="sidebar-pad"><div class="nav-caption" id="navCaption">LIBRARY CONTENTS</div><nav id="chapNav"></nav></div><div class="sidebar-bottom"><div class="sideStats"><span id="doneLabel">Completed</span> <strong id="doneCount">0 / 500</strong></div><div class="bar" aria-label="Course completion"><span id="courseBar"></span></div><div class="sideStats" style="margin-top:12px" id="safeNote">Use public, non-sensitive inputs only.</div></div></aside>
- <main>
- <header class="top"><div style="display:flex;align-items:center;gap:12px"><button class="btn tiny mobileMenu" id="menuBtn" aria-label="Open chapter menu">☰</button><div><h1 id="headerTitle">AI Prompt Library</h1><div class="sub" id="headerSub">English & Khmer · Offline student edition</div></div></div><div class="tools"><div class="seg" aria-label="Language"><button id="enBtn" class="active" aria-pressed="true">EN</button><button id="kmBtn" aria-pressed="false">ខ្មែរ</button></div><div class="seg" aria-label="Viewing mode"><button id="readingBtn" class="active" aria-pressed="true">▤ <span data-ui="read">Read</span></button><button id="slideBtn" aria-pressed="false">▣ <span data-ui="slides">Slides 16:9</span></button></div><div class="searchWrap"><input type="search" id="search" class="searchInput" placeholder="Search 500 prompts..." aria-label="Search prompts" autocomplete="off"><div id="results" class="results" role="listbox"></div></div><button class="btn tiny" id="zoomOut" title="Decrease text size">A−</button><button class="btn tiny" id="zoomIn" title="Increase text size">A+</button><button class="btn tiny" id="contrast" title="High contrast">◐</button><button class="btn tiny" id="printBtn" title="Print reading chapter">⎙</button></div></header>
- <div class="body" id="bodyRoot">
-  <section id="introBar"><div class="eyebrow" id="eyebrow">30-HOUR COURSE · 5 CHAPTERS</div><h2 class="headline" id="chapterTitle">AI Foundations and Basic Prompting</h2><p class="lede" id="chapterIntro"></p><div class="summaryTiles"><div class="tile"><strong id="tilePrompt">100</strong><small id="tilePromptCaption">Prompts in this chapter</small></div><div class="tile"><strong id="tileSource">500 / 500</strong><small id="tileSourceCaption">Prompt coverage</small></div><div class="tile"><strong id="tileWords">31,528</strong><small id="tileWordsCaption">English source tokens</small></div><div class="tile"><strong id="tileLangs">EN / ខ្មែរ</strong><small id="tileLangCaption">Matching prompt IDs</small></div></div></section>
-  <section class="readingArea" id="readingArea"><div class="readerExport"><span id="exportHint">All 500 prompts · Offline editable PowerPoint</span><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary tiny" id="readerExportEN">⇩ Editable PPTX · EN</button><button class="btn primary tiny" id="readerExportKM">⇩ Editable PPTX · ខ្មែរ</button></div></div><div id="reader" class="reader"></div></section>
-  <section class="slideArea" id="slideArea"><div class="slideToolbar"><div class="counter" id="slideCounter">Slide 1</div><div style="display:flex;gap:8px"><button class="btn" id="prev">← <span data-ui="previous">Previous</span></button><button class="btn primary" id="next"><span data-ui="next">Next</span> →</button></div></div><div class="stageframe" id="stageframe"><div class="slideCanvas" id="slideCanvas"><div class="slidetop"><div><div class="slidechapter" id="slideChapter"></div><div class="slideTitle" id="slideHeading"></div></div><div style="font-size:20px;color:#dceef2;letter-spacing:.08em">AI · PROMPT</div></div><div class="slidecontent" id="slideContent"></div><div class="slidebottom"><span id="slideFoot"></span><span class="slidefootNum" id="slideFootNum"></span></div></div></div><div class="understage"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn action" id="copySlide">⧉ <span data-ui="copy">Copy prompt</span></button><button class="btn" id="markDone">✓ <span data-ui="mark">Mark complete</span></button><button class="btn" id="bookmark">☆ <span data-ui="bookmark">Bookmark</span></button></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" id="exportEN">⇩ Editable PPTX · EN</button><button class="btn primary" id="exportKM">⇩ Editable PPTX · ខ្មែរ</button></div></div><div class="exportStatus" id="exportStatus" role="status" aria-live="polite"></div></section>
-  <section class="coveragePanel"><details id="qualityDetails"><summary id="qualitySummary">Source coverage & verification</summary><div class="coverageGrid"><div><b id="cover1">500 / 500</b><small id="cover1lbl">Original prompts</small></div><div><b id="cover2">500 / 500</b><small id="cover2lbl">Khmer entries</small></div><div><b id="cover3">31,528</b><small id="cover3lbl">Original source whitespace words</small></div><div><b>2 / 2</b><small id="cover4lbl">Source tables</small></div><div><b id="cover5">2,550 / 2,550</b><small id="cover5lbl">Translated prompt-field entries</small></div><div><b>16:9</b><small id="cover6lbl">Slide aspect ratio</small></div></div><p id="qualityText" class="verification"></p><p id="qualityAdvice" class="verification"></p></details></section>
- </div></main>
-</div>
-<div class="toast" role="status" aria-live="polite" id="toast"></div>
-<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@4.0.0/dist/pptxgen.bundle.js"></script>
-<script src="data.js"></script>
-<script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>AI Prompt Library | 500 Copyable Prompts</title>
+    <link
+      rel="icon"
+      type="image/jpeg"
+      href="Gemini_Generated_Image_nyu9z6nyu9z6nyu9.jpg"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="shell" id="shell">
+      <aside aria-label="Chapter navigation" id="sidebar">
+        <div class="logo">
+          <img
+            src="Gemini_Generated_Image_nyu9z6nyu9z6nyu9.jpg"
+            alt="Logo"
+            style="
+              width: 43px;
+              height: 43px;
+              border-radius: 12px;
+              object-fit: cover;
+              flex-shrink: 0;
+            "
+          />
+          <div>
+            <strong id="logoTitle">Prompt Library</strong
+            ><small id="logoSmall">500 PROMPTS · 5 CHAPTERS</small>
+          </div>
+        </div>
+        <div class="sidebar-pad">
+          <div class="nav-caption" id="navCaption">LIBRARY CONTENTS</div>
+          <nav id="chapNav"></nav>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="sideStats">
+            <span id="doneLabel">Completed</span>
+            <strong id="doneCount">0 / 500</strong>
+          </div>
+          <div class="bar" aria-label="Course completion">
+            <span id="courseBar"></span>
+          </div>
+          <div class="sideStats" style="margin-top: 12px" id="safeNote">
+            Use public, non-sensitive inputs only.
+          </div>
+        </div>
+      </aside>
+      <main>
+        <header class="top">
+          <div style="display: flex; align-items: center; gap: 12px">
+            <button
+              class="btn tiny mobileMenu"
+              id="menuBtn"
+              aria-label="Open chapter menu"
+            >
+              ☰
+            </button>
+            <div>
+              <h1 id="headerTitle">AI Prompt Library</h1>
+              <div class="sub" id="headerSub">
+                English & Khmer · Offline student edition
+              </div>
+            </div>
+          </div>
+          <div class="tools">
+            <div class="seg" aria-label="Language">
+              <button id="enBtn" class="active" aria-pressed="true">EN</button
+              ><button id="kmBtn" aria-pressed="false">ខ្មែរ</button>
+            </div>
+            <div class="seg" aria-label="Viewing mode">
+              <button id="readingBtn" class="active" aria-pressed="true">
+                ▤ <span data-ui="read">Read</span></button
+              ><button id="slideBtn" aria-pressed="false">
+                ▣ <span data-ui="slides">Slides 16:9</span>
+              </button>
+            </div>
+            <div class="searchWrap">
+              <input
+                type="search"
+                id="search"
+                class="searchInput"
+                placeholder="Search 500 prompts..."
+                aria-label="Search prompts"
+                autocomplete="off"
+              />
+              <div id="results" class="results" role="listbox"></div>
+            </div>
+            <button class="btn tiny" id="zoomOut" title="Decrease text size">
+              A−</button
+            ><button class="btn tiny" id="zoomIn" title="Increase text size">
+              A+</button
+            ><button class="btn tiny" id="contrast" title="High contrast">
+              ◐</button
+            ><button
+              class="btn tiny"
+              id="printBtn"
+              title="Print reading chapter"
+            >
+              ⎙
+            </button>
+          </div>
+        </header>
+        <div class="body" id="bodyRoot">
+          <section id="introBar">
+            <div class="eyebrow" id="eyebrow">30-HOUR COURSE · 5 CHAPTERS</div>
+            <h2 class="headline" id="chapterTitle">
+              AI Foundations and Basic Prompting
+            </h2>
+            <p class="lede" id="chapterIntro"></p>
+            <div class="summaryTiles">
+              <div class="tile">
+                <strong id="tilePrompt">100</strong
+                ><small id="tilePromptCaption">Prompts in this chapter</small>
+              </div>
+              <div class="tile">
+                <strong id="tileSource">500 / 500</strong
+                ><small id="tileSourceCaption">Prompt coverage</small>
+              </div>
+              <div class="tile">
+                <strong id="tileWords">31,528</strong
+                ><small id="tileWordsCaption">English source tokens</small>
+              </div>
+              <div class="tile">
+                <strong id="tileLangs">EN / ខ្មែរ</strong
+                ><small id="tileLangCaption">Matching prompt IDs</small>
+              </div>
+            </div>
+          </section>
+          <section class="readingArea" id="readingArea">
+            <div class="readerExport">
+              <span id="exportHint"
+                >All 500 prompts · Offline editable PowerPoint</span
+              >
+              <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                <button class="btn primary tiny" id="readerExportEN">
+                  ⇩ Editable PPTX · EN</button
+                ><button class="btn primary tiny" id="readerExportKM">
+                  ⇩ Editable PPTX · ខ្មែរ
+                </button>
+              </div>
+            </div>
+            <div id="reader" class="reader"></div>
+          </section>
+          <section class="slideArea" id="slideArea">
+            <div class="slideToolbar">
+              <div class="counter" id="slideCounter">Slide 1</div>
+              <div style="display: flex; gap: 8px">
+                <button class="btn" id="prev">
+                  ← <span data-ui="previous">Previous</span></button
+                ><button class="btn primary" id="next">
+                  <span data-ui="next">Next</span> →
+                </button>
+              </div>
+            </div>
+            <div class="stageframe" id="stageframe">
+              <div class="slideCanvas" id="slideCanvas">
+                <div class="slidetop">
+                  <div>
+                    <div class="slidechapter" id="slideChapter"></div>
+                    <div class="slideTitle" id="slideHeading"></div>
+                  </div>
+                  <div
+                    style="
+                      font-size: 20px;
+                      color: #dceef2;
+                      letter-spacing: 0.08em;
+                    "
+                  >
+                    AI · PROMPT
+                  </div>
+                </div>
+                <div class="slidecontent" id="slideContent"></div>
+                <div class="slidebottom">
+                  <span id="slideFoot"></span
+                  ><span class="slidefootNum" id="slideFootNum"></span>
+                </div>
+              </div>
+            </div>
+            <div class="understage">
+              <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                <button class="btn action" id="copySlide">
+                  ⧉ <span data-ui="copy">Copy prompt</span></button
+                ><button class="btn" id="markDone">
+                  ✓ <span data-ui="mark">Mark complete</span></button
+                ><button class="btn" id="bookmark">
+                  ☆ <span data-ui="bookmark">Bookmark</span>
+                </button>
+              </div>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                <button class="btn primary" id="exportEN">
+                  ⇩ Editable PPTX · EN</button
+                ><button class="btn primary" id="exportKM">
+                  ⇩ Editable PPTX · ខ្មែរ
+                </button>
+              </div>
+            </div>
+            <div
+              class="exportStatus"
+              id="exportStatus"
+              role="status"
+              aria-live="polite"
+            ></div>
+          </section>
+          <section class="coveragePanel">
+            <details id="qualityDetails">
+              <summary id="qualitySummary">
+                Source coverage & verification
+              </summary>
+              <div class="coverageGrid">
+                <div>
+                  <b id="cover1">500 / 500</b
+                  ><small id="cover1lbl">Original prompts</small>
+                </div>
+                <div>
+                  <b id="cover2">500 / 500</b
+                  ><small id="cover2lbl">Khmer entries</small>
+                </div>
+                <div>
+                  <b id="cover3">31,528</b
+                  ><small id="cover3lbl"
+                    >Original source whitespace words</small
+                  >
+                </div>
+                <div>
+                  <b>2 / 2</b><small id="cover4lbl">Source tables</small>
+                </div>
+                <div>
+                  <b id="cover5">2,550 / 2,550</b
+                  ><small id="cover5lbl">Translated prompt-field entries</small>
+                </div>
+                <div>
+                  <b>16:9</b><small id="cover6lbl">Slide aspect ratio</small>
+                </div>
+              </div>
+              <p id="qualityText" class="verification"></p>
+              <p id="qualityAdvice" class="verification"></p>
+            </details>
+          </section>
+        </div>
+      </main>
+    </div>
+    <div class="toast" role="status" aria-live="polite" id="toast"></div>
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@4.0.0/dist/pptxgen.bundle.js"></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
